@@ -41,7 +41,13 @@ module Dot =
 
 
     let private dotifyCmd (cmd: Cmd) id =
-            System.String.Format(
+
+        let getArgs cmd =
+            match cmd.Args with
+            | Some args -> args
+            | None -> ""
+
+        System.String.Format(
                 """{0} [shape=none, fontname="Courier" label=<
                   <TABLE BGCOLOR="#282a38"
                        COLOR="#5e607f"
@@ -54,7 +60,8 @@ module Dot =
                       <TD><font color="#ec82c4"><b>{2}</b></font></TD>
                     </TR>
                   </TABLE>>];""",
-                id, (cmd.Program |> encodeHTML), (cmd.Args |> encodeHTML))
+                id, (cmd.Program |> encodeHTML), (getArgs cmd |> encodeHTML))
+
 
 
     let private dotifyBinaryOperator (op: Operator) id =

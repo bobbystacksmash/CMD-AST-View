@@ -52,7 +52,10 @@ type TestClass () =
 
         let tests = [
             { Input = "Cmd: echo  Type: 0 Args: ` abc '"
-              Expected = (Command { Program = "echo"; Args = "abc" }) }
+              Expected = (Command { Program = "echo"; Args = Some "abc" }) }
+
+            { Input = "Cmd: calc  Type: 0"
+              Expected = (Command { Program = "calc"; Args = None }) }
         ]
         tests |> List.iter compare
 

@@ -1,23 +1,33 @@
 namespace CMDASTView.Tokeniser
 
 open CMDASTView.DomainTypes
+open System
 open System.Text.RegularExpressions
 
 module Tokeniser =
 
     let private (|CMD|CMP|UNKNOWN|) (input: string) =
         // TODO: hanlde redirects.
-        let m = Regex.Match(input, "^Cmd: (.+)  Type: (\d+) Args: `(.+)'$")
+        let m = Regex.Match(input, "^Cmd: (.+)  Type: (\d+)(?: Args: `(.+)')?$")
 
         if m.Success then
-            let (cmd, t, args) = (m.Groups.[1].Value,
-                                  m.Groups.[2].Value,
-                                  m.Groups.[3].Value.Trim())
+            let (cmd, t) = (m.Groups.[1].Value,
+                            m.Groups.[2].Value)
+
+            let args =
+                if m.Groups.Count = 4 then
+                    m.Groups.[3].Value.Trim()
+                else
+                    ""
+
             match t with
             | "39" ->
                 CMP (Special (IfTest (IfComparison (cmd, t, args))))
             | _ ->
-                CMD (Command { Program = cmd; Args = args })
+                if String.IsNullOrEmpty args then
+                    CMD (Command { Program = cmd; Args = None })
+                else
+                    CMD (Command { Program = cmd; Args = Some args })
         else
             UNKNOWN
 

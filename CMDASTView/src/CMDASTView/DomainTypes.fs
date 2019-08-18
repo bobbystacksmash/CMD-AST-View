@@ -28,7 +28,7 @@ type SpecialToken =
 
 type Cmd = {
     Program: string
-    Args: string
+    Args: string option
 }
 
 type Token =

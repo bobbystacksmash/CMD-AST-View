@@ -3,6 +3,7 @@ namespace CMDASTView.Parser
 open System
 open System.Text.RegularExpressions
 
+open CMDASTView.Common
 open CMDASTView.DomainTypes
 open CMDASTView.Tokeniser
 
@@ -15,21 +16,6 @@ module Parser =
     let private isEmpty (str: string) = str.Length = 0
     let private notEmpty str = (isEmpty str = false)
     let private ignoreParen str = Regex.IsMatch(str, "^\s*\(\s*$") = false
-
-    let tryTake num stack =
-        if num <= 0 then
-            Error "Number cannot be less-than 1"
-        else
-            let rec take' num stack accum =
-                match stack with
-                | [] when num = 0 -> Ok (accum, [])
-                | [] -> Error "not enough items"
-                | _ when num = 0 ->
-                    Ok (accum, stack)
-                | head :: rest ->
-                    take' (num - 1) rest (head :: accum)
-
-            take' num stack []
 
     let private validateTokens tokens =
         let rec validate' tokens accum =

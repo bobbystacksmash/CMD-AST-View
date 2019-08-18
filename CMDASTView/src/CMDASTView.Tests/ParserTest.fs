@@ -21,7 +21,7 @@ type TestClass () =
 
         let tests = [
             { Input    = "Cmd: echo  Type: 0 Args: ` foobar '";
-              Expected = LeafNode ({ Program = "echo"; Args = "foobar" }) }
+              Expected = LeafNode ({ Program = "echo"; Args = Some "foobar" }) }
         ]
         tests |> List.iter compare
 
@@ -36,8 +36,8 @@ type TestClass () =
         ]
 
         let expected = BinaryOperatorNode (Always,
-                                           LeafNode { Program = "echo"; Args = "foo" },
-                                           LeafNode { Program = "echo"; Args = "bar" })
+                                           LeafNode { Program = "echo"; Args = Some "foo" },
+                                           LeafNode { Program = "echo"; Args = Some "bar" })
 
         match Parser.parse (input |> String.concat "\n") with
         | Ok ast -> Assert.AreEqual(ast, expected)
@@ -55,8 +55,8 @@ type TestClass () =
         ]
 
         let expected = BinaryOperatorNode (Success,
-                                           LeafNode { Program = "echo"; Args = "foo" },
-                                           LeafNode { Program = "echo"; Args = "bar" })
+                                           LeafNode { Program = "echo"; Args = Some"foo" },
+                                           LeafNode { Program = "echo"; Args = Some "bar" })
 
         match Parser.parse (input |> String.concat "\n") with
         | Ok ast -> Assert.AreEqual(ast, expected)
@@ -74,8 +74,8 @@ type TestClass () =
         ]
 
         let expected = BinaryOperatorNode (Or,
-                                           LeafNode { Program = "echo"; Args = "foo" },
-                                           LeafNode { Program = "echo"; Args = "bar" })
+                                           LeafNode { Program = "echo"; Args = Some "foo" },
+                                           LeafNode { Program = "echo"; Args = Some "bar" })
 
         match Parser.parse (input |> String.concat "\n") with
         | Ok ast -> Assert.AreEqual(ast, expected)
@@ -92,8 +92,8 @@ type TestClass () =
         ]
 
         let expected = BinaryOperatorNode (Pipe,
-                                           LeafNode { Program = "echo"; Args = "foo" },
-                                           LeafNode { Program = "echo"; Args = "bar" })
+                                           LeafNode { Program = "echo"; Args = Some "foo" },
+                                           LeafNode { Program = "echo"; Args = Some "bar" })
 
         match Parser.parse (input |> String.concat "\n") with
         | Ok ast -> Assert.AreEqual(ast, expected)
@@ -117,8 +117,8 @@ type TestClass () =
 
         let expected =
             IfNode (IfComparison ("red", "39", "blue"),
-                        LeafNode { Program = "echo"; Args = "foo" },
-                        Some (LeafNode { Program = "echo"; Args = "bar" }))
+                        LeafNode { Program = "echo"; Args = Some "foo" },
+                        Some (LeafNode { Program = "echo"; Args = Some "bar" }))
 
 
         match Parser.parse (input |> String.concat "\n") with
@@ -145,9 +145,9 @@ type TestClass () =
             BinaryOperatorNode (Success,
                                 ForLoopNode (ForLoop "for %a in (1 1 50)",
                                              BinaryOperatorNode (Success,
-                                                                 LeafNode { Program = "echo"; Args = "foo" },
-                                                                 LeafNode { Program = "echo"; Args = "bar" })),
-                                LeafNode { Program = "echo"; Args = "baz" })
+                                                                 LeafNode { Program = "echo"; Args = Some "foo" },
+                                                                 LeafNode { Program = "echo"; Args = Some "bar" })),
+                                LeafNode { Program = "echo"; Args = Some "baz" })
 
         match Parser.parse (input |> String.concat "\n") with
         | Ok ast -> Assert.AreEqual(ast, expected)
