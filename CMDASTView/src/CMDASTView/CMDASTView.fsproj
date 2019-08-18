@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Common.fs"      />
+    <Compile Include="DomainTypes.fs" />
+    <Compile Include="Tokeniser.fs"   />
+    <Compile Include="Parser.fs"      />
+    <Compile Include="Dot.fs"         />
+  </ItemGroup>
+
+</Project>
