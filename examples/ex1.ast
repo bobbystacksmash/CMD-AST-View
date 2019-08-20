@@ -1,0 +1,5 @@
+echo foobar | calc
+&
+  Cmd: echo  Type: 0 Args: ` foobar '
+  Cmd: calc  Type: 0
+

@@ -8,7 +8,7 @@ module Tokeniser =
 
     let private (|CMD|CMP|UNKNOWN|) (input: string) =
         // TODO: hanlde redirects.
-        let m = Regex.Match(input, "^Cmd: (.+)  Type: (\d+)(?: Args: `(.+)')?$")
+        let m = Regex.Match(input.Trim(), "^Cmd: (.+)  Type: (\d+)(?: Args: `(.+)')?")
 
         if m.Success then
             let (cmd, t) = (m.Groups.[1].Value,
@@ -46,7 +46,6 @@ module Tokeniser =
         else
             UNKNOWN
 
-
     let private (|FOR|UNKNOWN|) (input: string) =
         if Regex.IsMatch(input.Trim(), "^for ")
         then
@@ -78,7 +77,8 @@ module Tokeniser =
         | ELSE        -> TOKEN (Special (Else IfElse))
         | FOR hdr     -> TOKEN (Special (For (ForLoop hdr)))
         | OPERATOR op -> TOKEN op
-        | _           -> UNKNOWN
+        | _           ->
+            UNKNOWN
 
 
     let tokenise (line: string) =

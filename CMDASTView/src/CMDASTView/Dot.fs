@@ -45,10 +45,10 @@ module Dot =
         let getArgs cmd =
             match cmd.Args with
             | Some args -> args
-            | None -> ""
+            | None -> "[[NONE]]"
 
         System.String.Format(
-                """{0} [shape=none, fontname="Courier" label=<
+                """{0} [shape=none, fontname="" label=<
                   <TABLE BGCOLOR="#282a38"
                        COLOR="#5e607f"
                        BORDER="0"
@@ -74,7 +74,7 @@ module Dot =
             | Pipe    -> "|"
 
         System.String.Format(
-            """{0} [shape=none, fontname="Courier", label=<
+            """{0} [shape=none, fontname="", label=<
                  <TABLE BGCOLOR="#282a38"
                         COLOR="#5e607f"
                         BORDER="0"
@@ -96,14 +96,14 @@ module Dot =
         match forLoop with
         | ForLoop hdr ->
             System.String.Format(
-                """{0} [shape=none, fontname="Courier", label=<
+                """{0} [shape=none, fontname="", label=<
                   <TABLE BGCOLOR="#282a38"
                          COLOR="#5e607f"
                          BORDER="0"
                          CELLBORDER="1"
                          CELLSPACING="0">
                     <TR><TD><font color="#70e093">{1}</font></TD></TR>
-                    <TR><TD port="p0"><font color="#efece4"><b>DO</b></font></TD></TR>
+                    <TR><TD port="p1"><font color="#efece4"><b>DO</b></font></TD></TR>
                   </TABLE>>];""",
                 id, (hdr |> encodeHTML))
 
@@ -113,7 +113,7 @@ module Dot =
         match ifCmp with
         | IfComparison (leftOp, cmpType, rightOp) ->
             System.String.Format(
-                """{0} [shape=none, fontname="Courier", label=<
+                """{0} [shape=none, fontname="", label=<
                   <TABLE BGCOLOR="#282a38"
                       COLOR="#5e607f"
                       BORDER="0"

@@ -64,7 +64,6 @@ module Parser =
                 | ElseNode _ ->
                     Error "IF cannot have ELSE has first branch."
                 | _ ->
-                    printfn "----> %A" ifBody
                     let node = IfNode (cmp, ifBody, Some elseNode)
                     Ok (node :: remaining)
 

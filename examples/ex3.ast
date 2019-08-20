@@ -1,0 +1,10 @@
+// IF "1"=="1" (echo foo && echo bar) else (echo blahblah)
+IF
+  Cmd: "this"  Type: 39 Args: `"that"'
+  (
+    &&
+      Cmd: echo  Type: 0 Args: ` foo '
+      Cmd: echo  Type: 0 Args: ` bar'
+else
+  (
+    Cmd: echo  Type: 0 Args: ` baz'
