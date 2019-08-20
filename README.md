@@ -35,7 +35,7 @@ which `CMD-AST-View` then converts in to a [GraphViz](https://www.graphviz.org/)
 3. `dotnet test`
 4. `cd src/cmdast2dot`
 
-From here you may build the `cmdast2dot` CLI for your platform of choice, using `dotnet publish` and the ["runtime identifier"](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) (RID) for your target platform, for example:
+From here you may build the `cmdast2dot` CLI for your platform of choice using `dotnet publish` and the ["runtime identifier"](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) (RID) for your target platform, for example:
 
 | OS | Build CMD |
 |-----|------------|
@@ -45,7 +45,7 @@ From here you may build the `cmdast2dot` CLI for your platform of choice, using 
 | `linux-arm` | `dotnet publish -c release -r linux-arm` |
 | `osx.10.14-x64` | `dotnet publish -c release -r osx.10.14-x64` |
 
-Once you've build your binary, assuming you're still in `src/cmdast2dot`, the binaries can be found at:
+Once you've built your binary, assuming you're still in `src/cmdast2dot`, the binaries can be found at:
 
  * `bin/release/netcoreapp2.2`
 
