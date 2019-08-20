@@ -40,7 +40,7 @@ From here you may build the `cmdast2dot` CLI for your platform of choice, using 
 | OS | Build CMD |
 |-----|------------|
 | `win7-x64` | `dotnet publish -c release -r win7-x64` |
-| `win10-x64` | `dotnet publish -c release -r win7-x64` |
+| `win10-x64` | `dotnet publish -c release -r win10-x64` |
 | `linux-x64` | `dotnet publish -c release -r linux-x64` |
 | `linux-arm` | `dotnet publish -c release -r linux-arm` |
 | `osx.10.14-x64` | `dotnet publish -c release -r osx.10.14-x64` |
