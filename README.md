@@ -2,7 +2,7 @@
 
 ## About
 
-In November 2018 FireEye published a [threat research article](https://www.fireeye.com/blog/threat-research/2018/11/cmd-and-conquer-de-dosfuscation-with-flare-qdb.html) that introduced a utility (De-Dosfuscator) which hooks ~CMD.EXE~, dumping obfuscated instructions in-the-clear.  As part of their research, FireEye discovered a debug flag: `fDumpParse` which is a hidden debug mode for `CMD` that exports the Abstract Syntax Tree (AST) of the parsed command.
+In November 2018 FireEye published a [threat research article](https://www.fireeye.com/blog/threat-research/2018/11/cmd-and-conquer-de-dosfuscation-with-flare-qdb.html) that introduced a utility (De-Dosfuscator) which hooks `CMD.EXE`, dumping obfuscated instructions in-the-clear.  As part of their research, FireEye discovered a debug flag: `fDumpParse` which is a hidden debug mode for `CMD` that exports the Abstract Syntax Tree (AST) of the parsed command.
 
 This project is a rough-and-ready F# parser designed to convert the AST exported from `fDumpParse` in to a GraphViz drawing, making CMD's AST far easier to read.
 
