@@ -1,4 +1,4 @@
-// IF "1"=="1" (echo foo && echo bar) else (echo blahblah)
+// IF "this"=="that" (echo foo && echo bar) else (echo baz)
 IF
   Cmd: "this"  Type: 39 Args: `"that"'
   (
