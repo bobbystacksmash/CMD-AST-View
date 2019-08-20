@@ -48,3 +48,26 @@ From here you may build the `cmdast2dot` CLI for your platform of choice, using 
 Once you've build your binary, assuming you're still in `src/cmdast2dot`, the binaries can be found at:
 
  * `bin/release/netcoreapp2.2`
+
+Ensure the compiled binary is in your path, and then it should be possible to pipe a `CMD.EXE` AST directly in to `cmdast2dot`.  All being well, `cmdast2dot` should produce a valid GraphViz drawing, which can then be converted in to an image format.
+
+For my workflow, I use De-Dosfuscator with `fDumpParse` to generate the AST, which I write to a text file.  I then pipe the text file in to `cmdast2dot`, piping the output of *that* in to DOT:
+
+```
+cat ast.txt | cmdast2dot | tee | dot -Tpng -o ast.png
+```
+Where the contents of `ast.txt` contains the following AST that was generated from the expression: `IF "this"=="that" (echo foo && echo bar) else (echo baz)`:
+```cmd
+IF
+  Cmd: "this"  Type: 39 Args: `"that"'
+  (
+    &&
+      Cmd: echo  Type: 0 Args: ` foo '
+      Cmd: echo  Type: 0 Args: ` bar'
+else
+  (
+    Cmd: echo  Type: 0 Args: ` baz'
+```
+
+A small amount of GraphViz fu using the DOT render `dot -Tpng -o ast.png` produces the following graphic:
+![AST output](https://github.com/bobbystacksmash/CMD-AST-View/blob/master/examples/images/ex3.ast.png)
