@@ -48,6 +48,8 @@ From here you may build the `cmdast2dot` CLI for your platform of choice using `
 Once you've built your binary, assuming you're still in `src/cmdast2dot`, the binaries can be found at:
 
  * `bin/release/netcoreapp2.2`
+ 
+ ## Usage
 
 Ensure the compiled binary is in your path, and then it should be possible to pipe a `CMD.EXE` AST directly in to `cmdast2dot`.  All being well, `cmdast2dot` should produce a valid GraphViz drawing, which can then be converted in to an image format.
 
