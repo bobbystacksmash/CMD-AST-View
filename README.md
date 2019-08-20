@@ -8,7 +8,7 @@ This project is a rough-and-ready F# parser designed to convert the AST exported
 
 Given the following input:
 
-```
+```cmd
   (for %a in (1 1 50) Do (echo foo && echo bar)) && echo baz
 ```
 `fDumpParse` produces the AST:
