@@ -24,7 +24,7 @@ Given the following input:
 ```
 which `CMD-AST-View` then converts in to a [GraphViz](https://www.graphviz.org/) drawing, which hopefully presents the AST in an easier-to-read way:
 
-![Example CMDASTView Output](https://github.com/bobbystacksmash/CMD-AST-View/blob/master/examples/images/ex3.ast.png)
+![Example CMDASTView Output](https://github.com/bobbystacksmash/CMD-AST-View/blob/master/examples/images/ex2.ast.png)
 
 ## Building
 
